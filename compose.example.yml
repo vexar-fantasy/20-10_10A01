@@ -1,0 +1,16 @@
+# Keep a separately customized copy of the project in each folder.
+# Start both sites with: docker compose -f compose.example.yml up -d --build
+services:
+  family-greeting:
+    build: ./family-greeting
+    container_name: family-greeting
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+
+  friends-greeting:
+    build: ./friends-greeting
+    container_name: friends-greeting
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
