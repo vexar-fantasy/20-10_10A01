@@ -1,21 +1,23 @@
 # Four Vercel deployments
 
-This repository serves all four sites. Create four Vercel projects, all connected to the `main` branch of this GitHub repository. Do not create separate Git branches or copies of the code.
+This repository serves all four independent websites. Create four Vercel projects, all connected to the `main` branch of this GitHub repository. Do not create separate Git branches or copies of the code.
 
-For every project, open **Settings → Environment Variables** in Vercel and add `NEXT_PUBLIC_RECIPIENT_ID` for the **Production** environment. Its value must match an `id` in `src/data/recipients.ts`.
+For every project, open **Settings → Environment Variables** in Vercel and add these values for the **Production** environment:
 
-| Vercel project | Custom domain | `NEXT_PUBLIC_RECIPIENT_ID` |
+| Variable | Value |
+| --- | --- |
+| `NEXT_PUBLIC_GREETING_NAME` | The one person’s display name for this website |
+| `NEXT_PUBLIC_GREETING_PASSWORD` | Their four-digit greeting-card password |
+| `NEXT_PUBLIC_GREETING_MESSAGE` | Their personal greeting message |
+
+| Vercel project | Custom domain |
 | --- | --- | --- |
-| Greeting – Chick | `nhacuachick.andoan.org` | Choose this recipient's ID |
-| Greeting – 10A11 Peak | `10a11peak.andoan.org` | Choose this recipient's ID |
-| Greeting – Bảo Long | `baolong.andoan.org` | Choose this recipient's ID |
-| Greeting – Nguyễn Phúc | `nguyenphuc.andoan.org` | Choose this recipient's ID |
+| Greeting – Chick | `nhacuachick.andoan.org` |
+| Greeting – 10A11 Peak | `10a11peak.andoan.org` |
+| Greeting – Bảo Long | `baolong.andoan.org` |
+| Greeting – Nguyễn Phúc | `nguyenphuc.andoan.org` |
 
-After setting the environment variable, redeploy that Vercel project. The site then skips the name selector and opens directly to the chosen recipient's password screen. Without this variable, the ordinary recipient-selection screen remains available, which is useful for local development.
-
-## Recipient data
-
-Edit `src/data/recipients.ts` before deployment. Each recipient needs a unique `id`, `name`, four-digit `password`, and `greeting`. For four separate sites, ensure the file has at least four entries, then use the matching `id` as the environment-variable value above.
+After setting all three variables, redeploy that Vercel project. The site then skips the name selector and opens directly to that website's personal password screen. The other three people are not used by that deployment. Without these variables, the ordinary recipient-selection screen remains available, which is useful for local development.
 
 ## Domains and DNS
 
