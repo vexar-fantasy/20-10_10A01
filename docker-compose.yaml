@@ -1,0 +1,36 @@
+# Place this file beside the five website folders on your homelab.
+services:
+  greeting-10a01:
+    build: ./10a01
+    container_name: greeting-10a01
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+
+  greeting-calang:
+    build: ./calang
+    container_name: greeting-calang
+    restart: unless-stopped
+    ports:
+      - "3002:3000"
+
+  greeting-chick1:
+    build: ./chick1
+    container_name: greeting-chick1
+    restart: unless-stopped
+    ports:
+      - "3003:3000"
+
+  greeting-chick2:
+    build: ./chick2
+    container_name: greeting-chick2
+    restart: unless-stopped
+    ports:
+      - "3004:3000"
+
+  greeting-namdinh:
+    build: ./namdinh
+    container_name: greeting-namdinh
+    restart: unless-stopped
+    ports:
+      - "3005:3000"

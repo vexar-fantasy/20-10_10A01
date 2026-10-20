@@ -1,16 +1,39 @@
-# Keep a separately customized copy of the project in each folder.
-# Start both sites with: docker compose -f compose.example.yml up -d --build
+# Folder layout:
+#   ./10a01  ./calang  ./chick1  ./chick2  ./namdinh  ./docker-compose.yaml
+# Each website folder must contain its own Dockerfile.
+# Start every site with: docker compose up -d --build
 services:
-  family-greeting:
-    build: ./family-greeting
-    container_name: family-greeting
+  greeting-10a01:
+    build: ./10a01
+    container_name: greeting-10a01
     restart: unless-stopped
     ports:
       - "3001:3000"
 
-  friends-greeting:
-    build: ./friends-greeting
-    container_name: friends-greeting
+  greeting-calang:
+    build: ./calang
+    container_name: greeting-calang
     restart: unless-stopped
     ports:
       - "3002:3000"
+
+  greeting-chick1:
+    build: ./chick1
+    container_name: greeting-chick1
+    restart: unless-stopped
+    ports:
+      - "3003:3000"
+
+  greeting-chick2:
+    build: ./chick2
+    container_name: greeting-chick2
+    restart: unless-stopped
+    ports:
+      - "3004:3000"
+
+  greeting-namdinh:
+    build: ./namdinh
+    container_name: greeting-namdinh
+    restart: unless-stopped
+    ports:
+      - "3005:3000"
