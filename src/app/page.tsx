@@ -7,15 +7,15 @@ import { CelebrationScreen } from "@/components/CelebrationScreen";
 import { PasswordScreen } from "@/components/PasswordScreen";
 import { ScratchCard } from "@/components/ScratchCard";
 import { WelcomeScreen } from "@/components/WelcomeScreen";
-import { findRecipient } from "@/data/recipients";
+import { deploymentRecipient, findRecipient } from "@/data/recipients";
 
 type Step = "welcome" | "password" | "scratch" | "celebrate";
 type Theme = "light" | "dark";
 type ThemePreference = Theme | "system";
 
 export default function Home() {
-  const [step, setStep] = useState<Step>("welcome");
-  const [selectedId, setSelectedId] = useState("");
+  const [step, setStep] = useState<Step>(deploymentRecipient ? "password" : "welcome");
+  const [selectedId, setSelectedId] = useState(deploymentRecipient?.id ?? "");
   const [themePreference, setThemePreference] = useState<ThemePreference>("system");
   const [systemPrefersDark, setSystemPrefersDark] = useState(false);
   const recipient = findRecipient(selectedId);
@@ -36,7 +36,7 @@ export default function Home() {
     setThemePreference(nextTheme);
     window.localStorage.setItem("greeting-theme", nextTheme);
   };
-  const home = () => { setStep("welcome"); setSelectedId(""); };
+  const home = () => { setStep(deploymentRecipient ? "password" : "welcome"); setSelectedId(deploymentRecipient?.id ?? ""); };
   const activeTheme = themePreference === "system" ? (systemPrefersDark ? "dark" : "light") : themePreference;
 
   return <main data-theme={activeTheme}>

@@ -8,3 +8,9 @@ export const recipients: Recipient[] = [
 ];
 
 export const findRecipient = (id: string) => recipients.find((recipient) => recipient.id === id);
+
+/**
+ * Vercel replaces this public build-time value for each separate deployment.
+ * Leave it unset locally to keep the recipient-selection screen.
+ */
+export const deploymentRecipient = findRecipient(process.env.NEXT_PUBLIC_RECIPIENT_ID ?? "");
